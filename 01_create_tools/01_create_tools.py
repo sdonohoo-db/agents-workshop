@@ -32,13 +32,8 @@ from databricks.sdk import WorkspaceClient
 import yaml
 import os
 
-# Use the workspace client to retrieve information about the current user
-w = WorkspaceClient()
-user_email = w.current_user.me().display_name
-username = user_email.split("@")[0]
-
-# Catalog and schema have been automatically created thanks to lab environment
-catalog_name = f"{username}"
+# Catalog should already exist
+catalog_name = "<YOUR_CATALOG_NAME>"
 schema_name = "agents"
 
 # Allows us to reference these values when creating SQL/Python functions
@@ -215,11 +210,11 @@ from unitycatalog.ai.core.databricks import DatabricksFunctionClient
 client = DatabricksFunctionClient()
 
 # this will deploy the tool to UC, automatically setting the metadata in UC based on the tool's docstring & typing hints
-#python_tool_uc_info = client.create_python_function(func=get_todays_date, catalog=catalog_name, schema=schema_name, replace=True)
+python_tool_uc_info = client.create_python_function(func=get_todays_date, catalog=catalog_name, schema=schema_name, replace=True)
 
 # the tool will deploy to a function in UC called `{catalog}.{schema}.{func}` where {func} is the name of the function
 # Print the deployed Unity Catalog function name
-#print(f"Deployed Unity Catalog function name: {python_tool_uc_info.full_name}")
+print(f"Deployed Unity Catalog function name: {python_tool_uc_info.full_name}")
 
 # COMMAND ----------
 

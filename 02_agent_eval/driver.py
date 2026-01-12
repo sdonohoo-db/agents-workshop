@@ -30,6 +30,21 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,Parameter Configs
+from databricks.sdk import WorkspaceClient
+import yaml
+import os
+
+# Catalog should already exist
+catalog_name = "<YOUR_CATALOG_NAME>"
+schema_name = "agents"
+
+# Allows us to reference these values when creating SQL/Python functions
+dbutils.widgets.text("catalog_name", defaultValue=catalog_name, label="Catalog Name")
+dbutils.widgets.text("schema_name", defaultValue=schema_name, label="Schema Name")
+
+# COMMAND ----------
+
 # DBTITLE 1,Quick test to see if Agent works
 from agent import AGENT
 
@@ -196,16 +211,7 @@ import os
 
 mlflow.set_registry_uri("databricks-uc")
 
-# Use the workspace client to retrieve information about the current user
-w = WorkspaceClient()
-user_email = w.current_user.me().display_name
-username = user_email.split("@")[0]
-
-# Catalog and schema have been automatically created thanks to lab environment
-catalog_name = f"{username}"
-schema_name = "agents"
-
-# TODO: define the catalog, schema, and model name for your UC model
+# define the catalog, schema, and model name for your UC model
 model_name = "product_agent"
 UC_MODEL_NAME = f"{catalog_name}.{schema_name}.{model_name}"
 
@@ -237,4 +243,4 @@ from databricks import agents
 # Deploy the model to the review app and a model serving endpoint
 
 #Disabled for the lab environment but we've deployed the agent already!
-#agents.deploy(UC_MODEL_NAME, uc_registered_model_info.version, tags = {"endpointSource": "DI Days"})
+agents.deploy(UC_MODEL_NAME, uc_registered_model_info.version, tags = {"endpointSource": "DI Days"})
