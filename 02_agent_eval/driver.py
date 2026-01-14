@@ -195,7 +195,7 @@ with mlflow.start_run():
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Lets go back to the [agent.py]($./agent.py) file and change our prompt to reduce marketing fluff.
+# MAGIC ## Lets go back to the [agent.py]($./agent.py) file and change our prompt to correct the recommendation to contact support and/or reduce marketing fluff.
 
 # COMMAND ----------
 
