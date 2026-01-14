@@ -7,6 +7,8 @@ This lab is split into two parts. In **Part 1**, you will build and test a Datab
 ### Part 1: Architect Your First Agent
 ##### Notebook: 01_create_tools\01_create_tools
 
+**NOTE:** To run this notebook, edit the **Parameter Configs** cell near the top to set `catalog_name` to the name of your catalog for this lab.
+
 #### 1.1 Build Tools
 - **SQL and Python Functions**  
   - Write queries to access data critical for handling a customer service return workflow.  
@@ -35,6 +37,8 @@ This lab is split into two parts. In **Part 1**, you will build and test a Datab
 ### Part 2: Agent Evaluation
 
 ##### Notebook: 02_agent_eval/driver
+
+**NOTE:** To run this notebook, edit the **Parameter Configs** cell near the top to set `catalog_name` to the name of your catalog for this lab.
 
 #### 2.1 Define a New Agent and Retriever Tool
 - **Inspect Agent.py**
