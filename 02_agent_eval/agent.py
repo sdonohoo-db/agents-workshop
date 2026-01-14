@@ -49,9 +49,9 @@ system_prompt = "You are a customer success specialist that helps users with pro
 tools = []
 
 # You can use UDFs in Unity Catalog as agent tools
-# uc_tool_names = ["agents_lab.product.*"]
-# uc_toolkit = UCFunctionToolkit(function_names=uc_tool_names)
-# tools.extend(uc_toolkit.tools)
+uc_tool_names = ["agents_lab.product.*"]
+uc_toolkit = UCFunctionToolkit(function_names=uc_tool_names)
+tools.extend(uc_toolkit.tools)
 
 
 # # Use Databricks vector search index as tool
